@@ -1,0 +1,70 @@
+Step 1:- Check the opatch version and inventory for ORACLE_HOME on both nodes
+Step 2:-Check the opatch version and inventory for GRID HOME on both nodes
+Step 3:- Update the opatch utility
+
+Take the backup of OPatch directory from GRID and ORACLE_HOME on both nodes
+Step 4:- Validation of Oracle Inventory 
+Step 5:- Download and Unzip the April 18 PSU Patch
+Step 6:- Check Patch Conflict Detection and Resolution :-
+
+For GRID HOME,
+Step 7:- Apply the patch using Opatchauto
+
+ main advantage of opatchauto utility was automatically down the CRS and database services and restart the services after apply patching.
+
+opatchauto :-
+
+OPatchauto automatically patch the typical Grid Infrastructure (GI) and RAC home directories with minimal intervention.
+Check the DBA_REGISTRY_SQLPATCH : 
+
+
+Oracle12c-Step-by-Step Applying PSU Patch in Oracle 12c For Single-Instance            
+
+ 	
+ Level steps for applying the Patch 
+
+    Step 1:- Current version of Opatch Tool in our environment 
+    Step 2:- Backup the existing Opatch folder
+    Step 3:- Unzip 6880880 patch
+    Step 4:- Check the opatch lsinventory
+    Step 5:- Take Backup of ORACLE_HOME (Rollback plan)
+    Step 6:- Shutdown Standby Database and Listener
+    Step 7 :- Apply PSU patch on ORACLE_HOME
+    Step 8:- Startup the Database and Listener
+   Step 9:- Execute post patch steps and run datapatch command
+   Step 10 :- After applying PSU patch,Check the DBA_REGISTRY_SQLPATCH
+   Step 11:- Check opatch lsinventory  and list of patches applied in ORACLE_HOME .
+
+
+Critical Patch Update (CPU) --> Release of security fixes each quarter instead the cumulative database security patch for the quarter.
+
+Patch Set Updates (PSU) --> Cumulative patches that include both the security fixes and priority fixes.  They are "version upgrades" modifying the las number of version (11.2.0.1.1, 11.2.0.1.2,...).
+
+Security Patch Update (SPU) --> It is the new terminology of CPU (From October 2012) . SPU's can't be applied if any PSU's have been applied, unless your database is upgraded with a new base version.
+	 
+
+How To Applying PSU Patch on Oracle Dataguard Environment
+
+High Level steps for applying the Patch 
+
+    Primary site disable the log shipping to the standby database and Stop MRP on standby site
+    Shutdown Standby Database and Listener
+    Apply PSU patch on Standby site
+    Shutdown Primary database and Listener.
+    Apply PSU Patch on Primary Site
+    Enable Log shipping on Primary
+    execute Post installation Scripts (datapatch)
+    Monitor the redo apply from Primary to Standby
+
+LEVEL0 and LEVEL1 Backup:
+
+A level 0 incremental backup is physically identical to a full backup 
+ The only difference is that the level 0 backup is recorded as an incremental backup in the RMAN repository, 
+so it can be used as the parent for a level 1 backup.
+
+MAX PERFORMANCE:
+
+('SYNC'):  As the name implies,  primary server will NOT be committed until the logs have been successfully transported to the standby servers.  
+The synchronous log transport mode is required for the Maximum Protection and Maximum Availability data protection modes.
+LogXptMode = ('ASYNC'): primary server before the log file arrives on the standby servers.  
+The asynchronous log transport mode is required for the Maximum Performance data protection mode.
