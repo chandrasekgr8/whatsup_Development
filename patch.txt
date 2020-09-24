@@ -68,3 +68,5 @@ MAX PERFORMANCE:
 The synchronous log transport mode is required for the Maximum Protection and Maximum Availability data protection modes.
 LogXptMode = ('ASYNC'): primary server before the log file arrives on the standby servers.  
 The asynchronous log transport mode is required for the Maximum Performance data protection mode.
+
+Hide MAX PERFORMANCE
