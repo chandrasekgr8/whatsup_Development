@@ -70,3 +70,5 @@ LogXptMode = ('ASYNC'): primary server before the log file arrives on the standb
 The asynchronous log transport mode is required for the Maximum Performance data protection mode.
 
 Hide MAX PERFORMANCE
+Add dataguard are failover and switch over included
+Rac we have multiple nodes and asm 
